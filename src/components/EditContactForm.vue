@@ -58,7 +58,6 @@ export default {
       });
 
       props.toggleModal();
-      console.log("Edit contact function...");
     };
 
     return { name, email, handleEdit };

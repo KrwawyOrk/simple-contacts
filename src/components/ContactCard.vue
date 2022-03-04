@@ -17,6 +17,7 @@
     </va-list-item-section>
 
     <va-list-item-section icon>
+      <ButtonAddTask :addTask="addTask" :contactID="contact.id" />
       <ButtonEditContact :editContact="editContact" :contact="contact" />
       <ButtonRemoveContact
         :removeContact="removeContact"
@@ -29,17 +30,20 @@
 <script>
 import ButtonEditContact from "./action_buttons/ButtonEditContact.vue";
 import ButtonRemoveContact from "./action_buttons/ButtonRemoveContact.vue";
+import ButtonAddTask from "./action_buttons/ButtonAddTask.vue";
 
 export default {
   props: {
     contact: Object,
     removeContact: Function,
     editContact: Function,
+    addTask: Function,
   },
 
   components: {
     ButtonEditContact,
     ButtonRemoveContact,
+    ButtonAddTask,
   },
 
   setup() {

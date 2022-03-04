@@ -5,6 +5,7 @@
       :contactList="contactList"
       :removeContact="removeContact"
       :editContact="editContact"
+      :addTask="addTask"
     />
   </div>
 </template>
@@ -22,10 +23,10 @@ export default {
   },
 
   setup() {
-    const { contactList, addContact, removeContact, editContact } =
+    const { contactList, addContact, addTask, removeContact, editContact } =
       useContacts();
 
-    return { contactList, addContact, removeContact, editContact };
+    return { contactList, addContact, addTask, removeContact, editContact };
   },
 };
 </script>

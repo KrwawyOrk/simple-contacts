@@ -16,6 +16,7 @@
           :contact="contact"
           :removeContact="removeContact"
           :editContact="editContact"
+          :addTask="addTask"
         />
       </transition-group>
     </va-list>
@@ -30,6 +31,7 @@ export default {
     contactList: Array,
     removeContact: Function,
     editContact: Function,
+    addTask: Function,
   },
 
   components: {
