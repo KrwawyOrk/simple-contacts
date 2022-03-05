@@ -15,6 +15,7 @@
           :key="contact.id"
           :contact="contact"
           :removeContact="removeContact"
+          :removeTask="removeTask"
           :editContact="editContact"
           :addTask="addTask"
         />
@@ -30,6 +31,7 @@ export default {
   props: {
     contactList: Array,
     removeContact: Function,
+    removeTask: Function,
     editContact: Function,
     addTask: Function,
   },
@@ -39,7 +41,6 @@ export default {
   },
 
   setup() {
- 
     return {};
   },
 };

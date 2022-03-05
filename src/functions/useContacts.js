@@ -27,6 +27,17 @@ const useContacts = () => {
     contactList.value.splice(itemIndex, 1);
   };
 
+  const removeTask = (id, tasks) => {
+    const itemIndex = tasks.findIndex((task) => task.id === id);
+    if (itemIndex < 0) {
+      return;
+    }
+
+    tasks.splice(itemIndex, 1);
+
+    console.log("Funkcja removeTask!!");
+  };
+
   const editContact = ({ id, name, email }) => {
     const contact = contactList.value.find((contact) => contact.id === id);
 
@@ -39,6 +50,7 @@ const useContacts = () => {
     addContact,
     addTask,
     removeContact,
+    removeTask,
     editContact,
   };
 };

@@ -18,18 +18,13 @@
 
     <va-list-item-section icon>
       <va-button-group :rounded="false">
-      <va-button
-        icon="mail"
-        :rounded="false"
-        :disabled="contact.tasks.length !== 0 ? false : true"
-        >{{ contact.tasks.length }}</va-button
-      >
-      <ButtonAddTask :addTask="addTask" :contactID="contact.id" />
-      <ButtonEditContact :editContact="editContact" :contact="contact" />
-      <ButtonRemoveContact
-        :removeContact="removeContact"
-        :contactID="contact.id"
-      />
+        <ButtonShowTaskList :tasks="contact.tasks" :removeTask="removeTask" />
+        <ButtonAddTask :addTask="addTask" :contactID="contact.id" />
+        <ButtonEditContact :editContact="editContact" :contact="contact" />
+        <ButtonRemoveContact
+          :removeContact="removeContact"
+          :contactID="contact.id"
+        />
       </va-button-group>
     </va-list-item-section>
   </va-list-item>
@@ -39,11 +34,13 @@
 import ButtonEditContact from "./action_buttons/ButtonEditContact.vue";
 import ButtonRemoveContact from "./action_buttons/ButtonRemoveContact.vue";
 import ButtonAddTask from "./action_buttons/ButtonAddTask.vue";
+import ButtonShowTaskList from "./action_buttons/ButtonShowTaskList.vue";
 
 export default {
   props: {
     contact: Object,
     removeContact: Function,
+    removeTask: Function,
     editContact: Function,
     addTask: Function,
   },
@@ -52,6 +49,7 @@ export default {
     ButtonEditContact,
     ButtonRemoveContact,
     ButtonAddTask,
+    ButtonShowTaskList,
   },
 
   setup() {

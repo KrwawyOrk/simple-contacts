@@ -4,6 +4,7 @@
     <ContactList
       :contactList="contactList"
       :removeContact="removeContact"
+      :removeTask="removeTask"
       :editContact="editContact"
       :addTask="addTask"
     />
@@ -23,10 +24,10 @@ export default {
   },
 
   setup() {
-    const { contactList, addContact, addTask, removeContact, editContact } =
+    const { contactList, addContact, addTask, removeContact, removeTask, editContact } =
       useContacts();
 
-    return { contactList, addContact, addTask, removeContact, editContact };
+    return { contactList, addContact, addTask, removeContact, removeTask, editContact };
   },
 };
 </script>
