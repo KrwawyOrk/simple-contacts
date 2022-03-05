@@ -3,7 +3,6 @@
     @click="toggleModal"
     icon="edit"
     color="info"
-    size="small"
     :rounded="false"
   />
 

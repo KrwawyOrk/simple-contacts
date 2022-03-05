@@ -3,7 +3,6 @@
     @click="toggleModal"
     icon="delete"
     color="danger"
-    size="small"
     :rounded="false"
   />
 

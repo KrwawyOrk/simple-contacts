@@ -17,12 +17,20 @@
     </va-list-item-section>
 
     <va-list-item-section icon>
+      <va-button-group :rounded="false">
+      <va-button
+        icon="mail"
+        :rounded="false"
+        :disabled="contact.tasks.length !== 0 ? false : true"
+        >{{ contact.tasks.length }}</va-button
+      >
       <ButtonAddTask :addTask="addTask" :contactID="contact.id" />
       <ButtonEditContact :editContact="editContact" :contact="contact" />
       <ButtonRemoveContact
         :removeContact="removeContact"
         :contactID="contact.id"
       />
+      </va-button-group>
     </va-list-item-section>
   </va-list-item>
 </template>

@@ -3,7 +3,6 @@
     @click="toggleModal"
     icon="add_task"
     color="info"
-    size="small"
     :rounded="false"
   />
   <va-modal v-model="showModal" hide-default-actions overlay-opacity="0.3">
