@@ -1,7 +1,24 @@
-import { ref } from "vue";
+import { ref, onMounted, watch } from "vue";
 
 const useContacts = () => {
   const contactList = ref([]);
+
+  onMounted(() => {
+    const data = JSON.parse(localStorage.getItem('vue_simplecontacts'));
+    contactList.value = data;
+  })
+
+  watch(
+    () => [...contactList.value],
+    () => {
+      localStorage.setItem(
+        'vue_simplecontacts',
+        JSON.stringify(contactList.value)
+      );
+
+    },
+    { deep: true }
+  );
 
   const addContact = ({ id, name, email }) => {
     contactList.value.push({ id, name, email, tasks: [] });
@@ -34,8 +51,6 @@ const useContacts = () => {
     }
 
     tasks.splice(itemIndex, 1);
-
-    console.log("Funkcja removeTask!!");
   };
 
   const editContact = ({ id, name, email }) => {

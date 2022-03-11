@@ -24,10 +24,23 @@ export default {
   },
 
   setup() {
-    const { contactList, addContact, addTask, removeContact, removeTask, editContact } =
-      useContacts();
+    const {
+      contactList,
+      addContact,
+      addTask,
+      removeContact,
+      removeTask,
+      editContact,
+    } = useContacts();
 
-    return { contactList, addContact, addTask, removeContact, removeTask, editContact };
+    return {
+      contactList,
+      addContact,
+      addTask,
+      removeContact,
+      removeTask,
+      editContact,
+    };
   },
 };
 </script>
