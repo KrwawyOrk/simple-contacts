@@ -27,7 +27,7 @@
         </tbody>
       </table>
     </div>
-    <va-button @click="toggleModal" icon="done" :rounded="false">
+    <va-button @click="toggleModal" icon="done" :rounded="false" class="mt-2">
       Ok
     </va-button>
   </div>

@@ -5,7 +5,10 @@ const useContacts = () => {
 
   onMounted(() => {
     const data = JSON.parse(localStorage.getItem('vue_simplecontacts'));
-    contactList.value = data;
+    
+    if(data) {
+      contactList.value = data;
+    }
   })
 
   watch(
