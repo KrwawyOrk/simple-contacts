@@ -9,12 +9,16 @@
       <va-input
         v-model="name"
         label="Contact name"
+        type="text"
+        autocomplete="tel"  
         placeholder="contact name"
         required
       />
       <va-input
         v-model="email"
         label="Email"
+        type="text"
+        autocomplete="tel"  
         placeholder="contact email"
         required
         class="mt-4"
