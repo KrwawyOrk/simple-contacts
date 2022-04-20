@@ -1,27 +1,34 @@
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, computed } from "vue";
+
+const contactList = ref([]);
+let loadingContactsList = ref(true);
 
 const useContacts = () => {
-  const contactList = ref([]);
-
   onMounted(() => {
-    const data = JSON.parse(localStorage.getItem('vue_simplecontacts'));
-    
-    if(data) {
-      contactList.value = data;
+    loadingContactsList = true;
+    const data = JSON.parse(localStorage.getItem("vue_simplecontacts"));
+
+    if (data) {
+      setTimeout(() => {
+        contactList.value = data;
+        loadingContactsList = false;
+      }, 1500);
     }
-  })
+  });
 
   watch(
     () => [...contactList.value],
     () => {
       localStorage.setItem(
-        'vue_simplecontacts',
+        "vue_simplecontacts",
         JSON.stringify(contactList.value)
       );
-
     },
     { deep: true }
   );
+
+  const getContactsNumber = computed(() => contactList.value.length);
+  const isContactsListLoading = computed(() => loadingContactsList);
 
   const addContact = ({ id, name, email }) => {
     contactList.value.push({ id, name, email, tasks: [] });
@@ -65,6 +72,9 @@ const useContacts = () => {
 
   return {
     contactList,
+    loadingContactsList,
+    isContactsListLoading,
+    getContactsNumber,
     addContact,
     addTask,
     removeContact,
