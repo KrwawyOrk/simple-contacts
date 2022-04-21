@@ -1,13 +1,26 @@
 <template>
   <div>
-    <va-alert v-if="contactList.length === 0" color="info" class="mb-4">
+    <div
+      v-show="isContactsListLoading === true"
+      style="display: flex; justify-content: center; align-items: center; margin-top: 3rem"
+    >
+      <div>
+        <va-progress-circle indeterminate />
+      </div>
+    </div>
+
+    <va-alert
+      v-if="getContactsNumber === 0 && isContactsListLoading === false"
+      color="info"
+      class="mb-4"
+    >
       <template #icon>
         <va-icon name="info" />
       </template>
       Your contact list is empty. Press the add contact button.
     </va-alert>
 
-    <va-list v-else>
+    <va-list v-if="getContactsNumber">
       <va-list-label> Contacts </va-list-label>
       <transition-group name="list" tag="p">
         <ContactCard
@@ -26,6 +39,7 @@
 
 <script>
 import ContactCard from "./ContactCard.vue";
+import useContacts from "../functions/useContacts.js";
 
 export default {
   props: {
@@ -41,7 +55,8 @@ export default {
   },
 
   setup() {
-    return {};
+    const { getContactsNumber, isContactsListLoading } = useContacts();
+    return { getContactsNumber, isContactsListLoading };
   },
 };
 </script>

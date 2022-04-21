@@ -1,18 +1,21 @@
-import { ref, onMounted, watch, computed } from "vue";
+import { reactive, ref, onMounted, watch, computed } from "vue";
 
 const contactList = ref([]);
-let loadingContactsList = ref(true);
+
+const state = reactive({
+  loadingContactsList: false,
+});
 
 const useContacts = () => {
   onMounted(() => {
-    loadingContactsList = true;
+    state.loadingContactsList = true;
     const data = JSON.parse(localStorage.getItem("vue_simplecontacts"));
 
     if (data) {
       setTimeout(() => {
         contactList.value = data;
-        loadingContactsList = false;
-      }, 1500);
+        state.loadingContactsList = false;
+      }, 2000);
     }
   });
 
@@ -28,7 +31,7 @@ const useContacts = () => {
   );
 
   const getContactsNumber = computed(() => contactList.value.length);
-  const isContactsListLoading = computed(() => loadingContactsList);
+  const isContactsListLoading = computed(() => state.loadingContactsList);
 
   const addContact = ({ id, name, email }) => {
     contactList.value.push({ id, name, email, tasks: [] });
@@ -72,7 +75,7 @@ const useContacts = () => {
 
   return {
     contactList,
-    loadingContactsList,
+    state,
     isContactsListLoading,
     getContactsNumber,
     addContact,
