@@ -17,7 +17,7 @@
               </p>
               <va-button
                 @click="handleRemoveTask(task.id)"
-                icon="delete"
+                icon="done"
                 size="small"
                 color="info"
                 :rounded="false"
